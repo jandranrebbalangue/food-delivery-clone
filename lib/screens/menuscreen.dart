@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:food_delivery/screens/breakfastscreen.dart';
+import 'package:food_delivery/screens/dessertscreen.dart';
+import 'package:food_delivery/screens/quickbites.dart';
 import 'package:food_delivery/widget/menu.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
@@ -40,8 +43,16 @@ class _MenuScreenState extends State<MenuScreen> {
                   ),
                 ],
               ),
-              leading: Icon(Icons.menu),
-              actions: [Icon(Icons.search)],
+              leading: IconButton(
+                icon: Icon(Icons.menu),
+                onPressed: () {},
+              ),
+              actions: [
+                IconButton(
+                  icon: Icon(Icons.search),
+                  onPressed: () {},
+                )
+              ],
             ),
             body: TabBarView(
               children: [
@@ -114,15 +125,9 @@ class _MenuScreenState extends State<MenuScreen> {
                     SizedBox(height: 16),
                   ],
                 ),
-                Center(
-                  child: Text("Quick Bites"),
-                ),
-                Column(
-                  children: [Text("Breakfast")],
-                ),
-                Column(
-                  children: [Text("Dessert")],
-                ),
+                QuickBitesScreen(),
+                BreakfastScreen(),
+                DessertScreen()
               ],
             )));
   }
