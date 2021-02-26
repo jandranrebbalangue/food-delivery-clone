@@ -1,6 +1,13 @@
 import 'package:flutter/material.dart';
 
-class Menu extends StatelessWidget {
+class Menu extends StatefulWidget {
+  @override
+  _MenuState createState() => _MenuState();
+}
+
+int count = 0;
+
+class _MenuState extends State<Menu> {
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -45,8 +52,41 @@ class Menu extends StatelessWidget {
                         Container(
                             margin: EdgeInsets.only(
                                 left: 16, right: 16, top: 0, bottom: 0),
-                            child: Text("₱890", style: TextStyle(fontSize: 24)))
+                            child: Row(children: [
+                              Text("₱890", style: TextStyle(fontSize: 24)),
+                              SizedBox(width: 130),
+                              IconButton(
+                                color: Colors.green,
+                                icon: Icon(Icons.minimize),
+                                onPressed: () {
+                                  setState(() {
+                                    decrement();
+                                  });
+                                },
+                              ),
+                              Text("$count",
+                                  style: TextStyle(
+                                    color: Colors.green,
+                                  )),
+                              IconButton(
+                                icon: Icon(Icons.add),
+                                onPressed: () {
+                                  setState(() {
+                                    increment();
+                                  });
+                                },
+                                color: Colors.green,
+                              )
+                            ])),
                       ])))
         ]));
   }
+}
+
+void increment() {
+  count++;
+}
+
+void decrement() {
+  count--;
 }
